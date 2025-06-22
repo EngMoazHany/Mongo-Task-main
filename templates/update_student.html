@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Update Student</h1>
+    </header>
+
+    <main class="container">
+        <form action="{{ url_for('update_student', student_id=student._id) }}" method="POST" class="form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" class="form-control" value="{{ student.name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" class="form-control" value="{{ student.age }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="grades">Grades (comma separated)</label>
+                <input type="text" id="grades" name="grades" class="form-control" value="{{ student.grades | join(',') }}" required>
+                <small class="text-light">Example: 85,92,78</small>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Update Student</button>
+                <a href="{{ url_for('index') }}" class="btn btn-outline">Cancel</a>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2025 School Management System</p>
+    </footer>
+</body>
+</html>
